@@ -1,6 +1,6 @@
 # Delivery Fee Calculator with FastAPI
 
-![CI](https://github.com/riikkayoki/FastAPI-delivery-fee-calculator/workflows/CI/badge.svg)
+![CI](https://github.com/riikkayoki/FastAPI-delivery-fee-calculator/workflows/CI/badge.svg) [![Codecov](https://codecov.io/gh/riikkayoki/FastAPI-delivery-fee-calculator/branch/master/graph/badge.svg?token=IM0CP0V2L2)](https://codecov.io/gh/riikkayoki/FastAPI-delivery-fee-calculator)
 
 This is a [FastAPI](https://fastapi.tiangolo.com/) workshop project inspired by [Wolt!](https://github.com/woltapp/engineering-summer-intern-2022)
 
