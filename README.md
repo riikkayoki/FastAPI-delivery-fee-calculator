@@ -6,6 +6,7 @@ This is a [FastAPI](https://fastapi.tiangolo.com/) workshop project inspired by 
 
 
 ### Usage
+
 **Prerequisites**
 * Python 3.8 or later
 * Poetry
