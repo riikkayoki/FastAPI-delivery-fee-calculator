@@ -6,17 +6,18 @@ class Calculator:
         self.time = time
         self.delivery_fee = 0
 
-    # def get_total_delivery_fee(self):
-    #     pass
-    #     The delivery fee can never be more than 15€, including possible surcharges.
+    def get_small_order_fee(self):
+        """If the cart value is less than 1000,
+            a small surcharge is added to the delivery price.
 
-    # def get_small_order_fee(self):
-    #     pass
-    #     If the cart value is less than 10€,
-    #     a small order surcharge is added to the delivery price.
-    #     The surcharge is the difference between the cart value and 10€.
-    #     For example if the cart value is 8.90€,
-    #     the surcharge will be 1.10€
+        Returns:
+            True: if cart value is less than 1000
+            False: if cart value is greater than 1000.
+        """
+        if self.cart_value < 1000:
+            self.delivery_fee += 1000 - self.cart_value
+            return True
+        return False
 
     # def get_delivery_fee_by_distance(self):
     #     pass
