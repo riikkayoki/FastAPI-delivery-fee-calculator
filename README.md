@@ -11,7 +11,7 @@ This is a [FastAPI](https://fastapi.tiangolo.com/) workshop project inspired by 
 * Python 3.8 or later
 * Poetry
 
-####Install dependencies & Run the app
+### Install dependencies & Run the app
 
 Install the dependencies:
 ```
@@ -30,7 +30,7 @@ poetry run invoke start
 The API documentation is available in http://127.0.0.1:8000/docs.
 
 
-#### Test the app
+### Test the app
 
 Test the app:
 ```
@@ -55,7 +55,7 @@ View report on Firefox browser:
 poetry run invoke view-report
 ```
 
-#### Other
+### Other
 
 In this application, I have used Pylint for code analysis and Autopep8 for code formatting.
 
