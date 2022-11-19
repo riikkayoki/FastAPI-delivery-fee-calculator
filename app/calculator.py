@@ -47,4 +47,4 @@ class Calculator:
 
 
 #cal = Calculator(2500, 1500, 1, 1)
-#print(cal.get_delivery_fee_by_distance())
+# print(cal.get_delivery_fee_by_distance())

@@ -46,4 +46,3 @@ class TestCalculator(unittest.TestCase):
         self.calculator = Calculator(5000, 23456, 1, 1)
         self.calculator.get_delivery_fee_by_distance()
         self.assertEqual(self.calculator.delivery_fee, 460)
-
