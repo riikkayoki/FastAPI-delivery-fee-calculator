@@ -5,11 +5,13 @@
 This is a [FastAPI](https://fastapi.tiangolo.com/) workshop project inspired by [Wolt!](https://github.com/woltapp/engineering-summer-intern-2022)
 
 
-### Usage
+## Usage
 
 **Prerequisites**
 * Python 3.8 or later
 * Poetry
+
+####Install dependencies & Run the app
 
 Install the dependencies:
 ```
@@ -22,8 +24,50 @@ poetry shell
 ```
 Run the server:
 ```
-uvicorn app.main:app --reload
+poetry run invoke start
 ```
 
 The API documentation is available in http://127.0.0.1:8000/docs.
+
+
+#### Test the app
+
+Test the app:
+```
+poetry run invoke test
+```
+
+Create coverage html:
+
+```
+poetry run invoke coverage
+```
+
+Get coverage report:
+
+```
+poetry run invoke coverage-report
+```
+
+View report on Firefox browser:
+
+```
+poetry run invoke view-report
+```
+
+#### Other
+
+In this application, I have used Pylint for code analysis and Autopep8 for code formatting.
+
+Pylint:
+
+```
+poetry run invoke pylint
+```
+
+Autopep8:
+```
+poetry run invoke autopep
+```
+
 
