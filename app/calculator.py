@@ -1,20 +1,35 @@
-from datetime import datetime
-
 
 class Calculator:
+    """A class to calculate the delivery fee based on the given parameters.
+    """
+
     def __init__(self, cart_value, delivery_distance, amount_of_items, time):
         self.cart_value = cart_value
         self.delivery_distance = delivery_distance
         self.amount_of_items = amount_of_items
         self.time = time
-        self.delivery_fee = 0
+        self.delivery_fee = 2_00
+
+    def get_total_delivery_fee(self):
+        """Calculates the total delivery fee for order.
+
+        Returns:
+            int: self.delivery_fee
+        """
+        self.get_small_order_fee()
+        self.get_delivery_fee_by_distance()
+        self.get_extra_fee_if_over_four_items()
+        self.get_free_delivery()
+        self.get_friday_rush_hour_fee()
+        self.get_maximum_delivery_fee()
+        return int(self.delivery_fee)
 
     def get_small_order_fee(self):
         """If the cart value is less than 1000,
             a small surcharge is added to the delivery price.
         """
         if self.cart_value < 1000:
-            self.delivery_fee += 1000 - self.cart_value
+            self.delivery_fee += 10_00 - self.cart_value
 
     def get_delivery_fee_by_distance(self):
         """
@@ -24,17 +39,10 @@ class Calculator:
         Even if the distance would be shorter than 500 meters,
         the minimum fee is always 1€.
         """
-
-        self.delivery_fee += 10
-
-        if 500 < self.delivery_distance <= 1000:
-            self.delivery_fee += 10
-
         if self.delivery_distance > 1000:
             for index in range(1000, self.delivery_distance):
-                print(index)
                 if index % 500 == 0:
-                    self.delivery_fee += 10
+                    self.delivery_fee += 1_00
 
     def get_extra_fee_if_over_four_items(self):
         """If the number of items is five or more,
@@ -57,14 +65,9 @@ class Calculator:
         """
         if self.time.weekday() == 4 and 15 <= self.time.hour <= 19:
             self.delivery_fee *= 1.1
-            print(self.delivery_fee, 'moi')
+            self.delivery_fee = int(self.delivery_fee)
 
-
-cal = Calculator(1100, 10000, 10, datetime.fromisoformat(
-    "2022-11-25T15:00:00+00:01"))
-cal.delivery_fee = 10
-cal.get_friday_rush_hour_fee()
-print(cal.get_friday_rush_hour_fee())
-print(cal.time.weekday(), 'day')
-
-print(cal.delivery_fee)
+    def get_maximum_delivery_fee(self):
+        """The delivery fee can never be more than 15€, including possible surcharges
+        """
+        self.delivery_fee = min(self.delivery_fee, 1500)
