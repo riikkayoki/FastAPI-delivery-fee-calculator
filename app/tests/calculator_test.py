@@ -1,4 +1,5 @@
 import unittest
+from datetime import datetime
 from calculator import Calculator
 
 
@@ -66,3 +67,33 @@ class TestCalculator(unittest.TestCase):
         self.calculator = Calculator(1000, 0, 0, 0)
         self.calculator.get_free_delivery()
         self.assertEqual(self.calculator.delivery_fee, 0)
+
+    def test_rush_hour_fee_when_rush_hour(self):
+        friday_is_rush = datetime.fromisoformat("2022-11-25T15:00:00+00:01")
+        self.calculator = Calculator(0, 0, 0, friday_is_rush)
+        self.calculator.delivery_fee = 10
+        self.calculator.get_friday_rush_hour_fee()
+        self.assertEqual(self.calculator.delivery_fee, 11)
+
+    def test_rush_hour_fee_when_rush_hour(self):
+        friday_is_rush = datetime.fromisoformat("2022-11-25T15:00:00+00:00")
+        self.calculator = Calculator(0, 0, 0, friday_is_rush)
+        self.calculator.delivery_fee = 10
+        self.calculator.get_friday_rush_hour_fee()
+        self.assertEqual(self.calculator.delivery_fee, 11)
+
+    def test_rush_hour_fee_when_friday_but_not_rush_hour(self):
+        friday_is_not_rush = datetime.fromisoformat(
+            "2022-11-25T12:00:00+00:00")
+        self.calculator = Calculator(0, 0, 0, friday_is_not_rush)
+        self.calculator.delivery_fee = 10
+        self.calculator.get_friday_rush_hour_fee()
+        self.assertEqual(self.calculator.delivery_fee, 10)
+
+    def test_rush_hour_fee_when_not_friday_but_is_rush_hour(self):
+        not_friday_but_rush_hour = datetime.fromisoformat(
+            "2022-11-24T12:15:00+00:00")
+        self.calculator = Calculator(0, 0, 0, not_friday_but_rush_hour)
+        self.calculator.delivery_fee = 10
+        self.calculator.get_friday_rush_hour_fee()
+        self.assertEqual(self.calculator.delivery_fee, 10)

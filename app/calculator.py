@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class Calculator:
     def __init__(self, cart_value, delivery_distance, amount_of_items, time):
         self.cart_value = cart_value
@@ -29,6 +32,7 @@ class Calculator:
 
         if self.delivery_distance > 1000:
             for index in range(1000, self.delivery_distance):
+                print(index)
                 if index % 500 == 0:
                     self.delivery_fee += 10
 
@@ -47,12 +51,20 @@ class Calculator:
         if self.cart_value >= 1000:
             self.delivery_fee = 0
 
-    # def get_friday_rush_hour_fee(self):
-    #     pass
-    #     During the Friday rush (3 - 7 PM UTC),
-    #     the delivery fee (the total fee including possible surcharges)
-    #      will be multiplied by 1.1x.
+    def get_friday_rush_hour_fee(self):
+        """During the Friday rush (3 - 7 PM UTC),
+        the total delivery fee will be multiplied by 1.1x.
+        """
+        if self.time.weekday() == 4 and 15 <= self.time.hour <= 19:
+            self.delivery_fee *= 1.1
+            print(self.delivery_fee, 'moi')
 
 
-#cal = Calculator(1100, 500, 10, 1)
-# print(cal.get_free_delivery())
+cal = Calculator(1100, 10000, 10, datetime.fromisoformat(
+    "2022-11-25T15:00:00+00:01"))
+cal.delivery_fee = 10
+cal.get_friday_rush_hour_fee()
+print(cal.get_friday_rush_hour_fee())
+print(cal.time.weekday(), 'day')
+
+print(cal.delivery_fee)
