@@ -28,12 +28,18 @@ class Calculator:
             self.delivery_fee += 10
 
         if self.delivery_distance > 1000:
-            for index in range(501, self.delivery_distance):
+            for index in range(1000, self.delivery_distance):
                 if index % 500 == 0:
                     self.delivery_fee += 10
 
-    # def get_extra_fee_if_over_four_items(self):
-    #     pass
+    def get_extra_fee_if_over_four_items(self):
+        """If the number of items is five or more,
+            an additional 50 cent surcharge is added for each item above four.
+        """
+
+        if self.amount_of_items > 4:
+            for _ in range(4, self.amount_of_items):
+                self.delivery_fee += 5
 
     # def get_free_delivery(self):
     #     pass
@@ -46,5 +52,5 @@ class Calculator:
     #      will be multiplied by 1.1x.
 
 
-#cal = Calculator(2500, 1500, 1, 1)
-# print(cal.get_delivery_fee_by_distance())
+#cal = Calculator(2500, 500, 10, 1)
+# print(cal.get_extra_fee_if_over_four_items())
