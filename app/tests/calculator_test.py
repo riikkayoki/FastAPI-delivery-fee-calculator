@@ -64,19 +64,19 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(self.calculator.delivery_fee, 30)
 
     def test_free_delivery_if_cart_value_1000_or_more(self):
-        self.calculator = Calculator(1000, 0, 0, 0)
+        self.calculator = Calculator(1001, 0, 0, 0)
+        self.calculator.delivery_fee = 10
         self.calculator.get_free_delivery()
         self.assertEqual(self.calculator.delivery_fee, 0)
 
-    def test_rush_hour_fee_when_rush_hour(self):
-        friday_is_rush = datetime.fromisoformat("2022-11-25T15:00:00+00:01")
-        self.calculator = Calculator(0, 0, 0, friday_is_rush)
+    def test_free_delivery_if_cart_value_under_1000(self):
+        self.calculator = Calculator(900, 0, 0, 0)
         self.calculator.delivery_fee = 10
-        self.calculator.get_friday_rush_hour_fee()
-        self.assertEqual(self.calculator.delivery_fee, 11)
+        self.calculator.get_free_delivery()
+        self.assertEqual(self.calculator.delivery_fee, 10)
 
     def test_rush_hour_fee_when_rush_hour(self):
-        friday_is_rush = datetime.fromisoformat("2022-11-25T15:00:00+00:00")
+        friday_is_rush = datetime.fromisoformat("2022-11-25T15:00:00+00:01")
         self.calculator = Calculator(0, 0, 0, friday_is_rush)
         self.calculator.delivery_fee = 10
         self.calculator.get_friday_rush_hour_fee()
