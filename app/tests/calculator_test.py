@@ -61,3 +61,8 @@ class TestCalculator(unittest.TestCase):
         self.calculator = Calculator(0, 0, 10, 0)
         self.calculator.get_extra_fee_if_over_four_items()
         self.assertEqual(self.calculator.delivery_fee, 30)
+
+    def test_free_delivery_if_cart_value_1000_or_more(self):
+        self.calculator = Calculator(1000, 0, 0, 0)
+        self.calculator.get_free_delivery()
+        self.assertEqual(self.calculator.delivery_fee, 0)

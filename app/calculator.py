@@ -41,9 +41,11 @@ class Calculator:
             for _ in range(4, self.amount_of_items):
                 self.delivery_fee += 5
 
-    # def get_free_delivery(self):
-    #     pass
-    #     The delivery is free (0€) when the cart value is equal or more than 100€.
+    def get_free_delivery(self):
+        """The delivery is free (0€) when the cart value is equal or more than 100€."""
+
+        if self.cart_value >= 1000:
+            self.delivery_fee = 0
 
     # def get_friday_rush_hour_fee(self):
     #     pass
@@ -52,5 +54,5 @@ class Calculator:
     #      will be multiplied by 1.1x.
 
 
-#cal = Calculator(2500, 500, 10, 1)
-# print(cal.get_extra_fee_if_over_four_items())
+#cal = Calculator(1100, 500, 10, 1)
+# print(cal.get_free_delivery())
