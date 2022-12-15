@@ -22,7 +22,7 @@ class Calculator:
         self.get_free_delivery()
         self.get_friday_rush_hour_fee()
         self.get_maximum_delivery_fee()
-        return int(self.delivery_fee)
+        return self.delivery_fee
 
     def get_small_order_fee(self):
         """If the cart value is less than 1000,

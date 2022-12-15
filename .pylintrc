@@ -142,7 +142,8 @@ disable=
          missing-module-docstring,
          missing-function-docstring,
          missing-class-docstring,
-         E0611
+         E0611,
+         E0401
 ;         no-self-use
 
 # Enable the message, report, category or checker with the given id(s). You can

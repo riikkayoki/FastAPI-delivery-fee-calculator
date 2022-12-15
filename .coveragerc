@@ -1,4 +1,4 @@
 
 [run]
 source = app
-omit = app/tests/**,app/main.py
+omit = app/tests/**,app/main.py, app/request.py

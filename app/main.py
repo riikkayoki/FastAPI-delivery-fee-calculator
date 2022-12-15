@@ -1,14 +1,6 @@
-from datetime import datetime
 from fastapi import FastAPI
-from pydantic import BaseModel
-
-
-class Request(BaseModel):
-    cart_value: int
-    delivery_distance: int
-    number_of_items: int
-    time: datetime
-
+from app.request import Request
+from app.calculator import Calculator
 
 app = FastAPI(title="Delivery Fee Calculator API")
 
@@ -20,4 +12,6 @@ async def home():
 
 @app.post("/calculator")
 async def calculator(request: Request):
-    return request
+    calc = Calculator(request.cart_value, request.delivery_distance,
+                      request.number_of_items, request.time)
+    return calc.get_total_delivery_fee()
