@@ -4,9 +4,6 @@
 
 This is a [FastAPI](https://fastapi.tiangolo.com/)  workshop project inspired by [Wolt](https://github.com/woltapp/engineering-summer-intern-2022) challenge from spring 2022.
 
-You can find FastAPI documentation [here](https://fastapi.tiangolo.com/).
-
-
 ## Usage
 
 **Prerequisites**
